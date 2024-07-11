@@ -1,12 +1,1191 @@
-- 👋 Hi, I’m @FwVay
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+--[[
+░██████╗████████╗░█████╗░██████╗░  ░██████╗██╗░░██╗██╗██████╗░██████╗░██╗███╗░░██╗░██████╗░
+██╔════╝╚══██╔══╝██╔══██╗██╔══██╗  ██╔════╝██║░██╔╝██║██╔══██╗██╔══██╗██║████╗░██║██╔════╝░
+╚█████╗░░░░██║░░░██║░░██║██████╔╝  ╚█████╗░█████═╝░██║██║░░██║██║░░██║██║██╔██╗██║██║░░██╗░
+░╚═══██╗░░░██║░░░██║░░██║██╔═══╝░  ░╚═══██╗██╔═██╗░██║██║░░██║██║░░██║██║██║╚████║██║░░╚██╗
+██████╔╝░░░██║░░░╚█████╔╝██║░░░░░  ██████╔╝██║░╚██╗██║██████╔╝██████╔╝██║██║░╚███║╚██████╔╝
+╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░░░░  ╚═════╝░╚═╝░░╚═╝╚═╝╚═════╝░╚═════╝░╚═╝╚═╝░░╚══╝░╚═════╝░
 
-<!---
-FwVay/FwVay is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+███╗░░██╗██╗░██████╗░░██████╗░░█████╗░
+████╗░██║██║██╔════╝░██╔════╝░██╔══██╗
+██╔██╗██║██║██║░░██╗░██║░░██╗░███████║
+██║╚████║██║██║░░╚██╗██║░░╚██╗██╔══██║
+██║░╚███║██║╚██████╔╝╚██████╔╝██║░░██║
+╚═╝░░╚══╝╚═╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝
+]]
+
+-- // Fuck nigga
+-- // Python my sonny wonny
+-- // shit is a lil broken easy fix tho beleive its the silent module
+-- // https://discord.gg/fnPEMG2XKE
+getgenv().Skid = {
+    ["Start"] = {
+        ["Notifications"] = true, 
+        ["Key"] = "Put lua armor key here",
+    },
+    ["BulletRedirection"] = {
+        ["Enabled"] = true,
+        ["Prediction"] = 0.133,
+        ["Hit Chance"] = 100,
+        ["Target Part"] = "Head",
+        ["Target Part Offset"] = 0,
+        ["Closest Point"] = false, 
+        ["Mode"] = "closet", -- // closet is Silent Aim or Blatant is Traget Aim
+        ["Target Key"] = "Q",
+        ["Notifications"] = true,  
+        ["Anti Ground Shots"] = false,
+    },
+    ["Aim Assist"] = {
+        ["Enabled"] = true, 
+        ["Mode"] = "toggle", -- // FOV, toggle, hold
+        ["Target Key"] = "C", 
+        ["Notifications"] = true, 
+        ["Prediction"] = 0.133, 
+        ["Target Part"] = "Head", -- // Head, UpperTorso, HumanoidRootPart, LowerTorso
+        ["Target Part Offset"] = 0, -- / The offsest of the locked on part
+        ["Closest Point"] = false,  -- // streamable(Gets closest point onto the character when locked on)
+        ["Death Unlock"] = false, 
+        ["Outside Fov"] = false, 
+        ["Behind Object"] = false, 
+        ["Smoothness"] = true,
+        ["Smoothness Value"] = 1.447, 
+    },
+    ["Latency"] = {
+        ["Auto Prediction"] = {
+            ["Enabled"] = true, 
+            ['ping20_30'] = 0.12588,
+            ['ping30_40'] = 0.11911,
+            ['ping40_50'] = 0.12471,
+            ['ping50_60'] = 0.12766,
+            ['ping60_70'] = 0.12731,
+            ['ping70_80'] = 0.12951,
+            ['ping80_90'] = 0.13181,
+            ['ping90_100'] = 0.138,
+            ['ping100_110'] = 0.146,
+            ['ping110_120'] = 0.1367,
+            ['ping120_130'] = 0.1401,
+            ['ping130_140'] = 0.1437,
+            ['ping140_150'] = 0.153,
+            ['ping150_160'] = 0.1514,
+            ['ping160_170'] = 0.1663,
+            ['ping170_180'] = 0.1672,
+            ['ping180_190'] = 0.1848,
+            ['ping190_200'] = 0.1865,
+        }
+    },
+    ["Checks"] = {
+        ["Visible Check"] = true, 
+        ["K.O Check"] = true, 
+        ["Crew Check"] = false, 
+        ["Friend Check"] = false,  
+        ["Distance"] = { 
+            ["Enabled"] = false,
+            ["Max Distance"] = 2, 
+        }
+    },
+    ["Resolver"] = {
+        ["Enabled"] = false, 
+        ["Method"] = "movement breaker", -- // movement breaker, Pred breaker, Underground, Random
+    },
+    ["FOV"] = { 
+        ["Visible"] = true, 
+        ["Filled"] = false, 
+        ["Radius"] = 200,
+        ["Thickness"] = 1, 
+        ["Transparency"] = 1, 
+        ["Color"] = Color3.fromRGB(255,255,255) 
+    },
+    ["GunFOV"] = { -- //  doesnt work and to lazy to make it work
+        ['Enabled'] = true,
+        ['DoubleBarrel'] = 14.4,
+        ['Revolver'] = 12.2,
+        ['TacticalShotgun'] = 15.1,
+        ['Shotgun'] = 15.1,
+        ['Silencer'] = 12.2,
+        ['P90'] = 11.4
+    },
+    ["Crosshair"] = {
+        ["Size"] = 2, 
+        ["Length"] = 20, 
+        ["Gap"] = 40, 
+        ["RainbowEnabled"] = false,
+        ["RainbowSpeed"] = 1,
+        ["SpinSpeed"] = 90 
+    },
+    ["Blink Esp"] = {
+        ["Enabled"] = true,
+        ["Blink Key"] = Enum.KeyCode.F,
+        ["Blink Speed"] = 1.5,
+        ["ScaleFactor"] = 1, 
+        ["BoxPosition"] = Vector3.new(0, -0.8, 0), 
+    },
+    ["Crosshair"] = {
+        ["Size"] = 2,
+        ["Length"] = 20, 
+        ["Gap"] = 40, 
+        ["RainbowEnabled"] = false,
+        ["RainbowSpeed"] = 1,
+        ["SpinSpeed"] = 90 
+    },
+    ["Trashtalk"] = {
+        ["Enabled"] = true,
+        ["Key"] = "Y",
+    },
+}
+
+
+  local DraccIsBlack = Skid.CFrame
+  local AidenIsANigger = Skid["Latency"]
+  local JayIsACutie = Skid["Auto Prediction"]
+
+  local utility = {
+    Invite = "nigger",
+    Folder = "velocity Settings",
+    Version = "1.0.0-Private",
+    Ping = 5,
+    Bypass = {
+        2788229376, -- Da hood
+        12927359803, -- Dah Aim Trainer
+        12867571492, -- KatanaHood
+        11867820563, -- Dae Hood
+        12618586930, -- Dat Hood
+        13018411607, -- Dat Hood 2
+        13018411607, -- // Dat Hood Backup
+        9633073067, -- // Del Hood
+        11956541652, --// Dav Hood
+        10100958808, -- // Da Downhill
+        12815368779, -- // Da Hood Aim Trainer
+        13126185789, -- // Da Hood Aim Trainer VC
+    }
+  }
+  
+  
+  if not LPH_OBFUSCATED and not LPH_JIT_ULTRA then
+    LPH_NO_VIRTUALIZE = function(f) return f end
+    LRM_UserNote = ""
+    LRM_LinkedDiscordID = 1
+    LRM_TotalExecutions = 1
+    LRM_SecondsLeft = 9999
+  end
+  
+  getgenv().luarmor_vars = {
+    ID = LRM_LinkedDiscordID,
+  }
+
+  if getgenv().Skid.Start and getgenv().Skid.Start["Notifications"] == true then
+    function notify(text) 
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "Velocity",
+            Text = text, 
+            Duration = 2.5,
+        })
+    end
+end
+
+
+  local bypass = {
+    hoodmodded = function() 
+        for i,v in next, getgc(true) do
+            if typeof(v)=="table" and rawget(v,"DoThings") then
+                v.DoThings = function() end
+            end
+        end
+    end,
+    untitledhood = function() 
+        local _1;
+        _1 = hookmetamethod(game, "__namecall", function(self, ...)
+            if not checkcaller() and getnamecallmethod() == "FireServer" then
+                if tostring(self.Name) == ".gg/untitledhood" then
+                    local args = {...}
+                    if tostring(args[1]) == "ForceDetect" or tostring(args[1]) == "TeleportDetect" or tostring(args[1]) == "GUI_CHECK" then
+                        return 
+                    end
+                end
+            end
+            return _1(self, ...);
+        end)
+    end,
+    adonis = function()
+        for k,v in pairs(getgc(true)) do
+            if pcall(function() return rawget(v,"indexInstance") end) and type(rawget(v,"indexInstance")) == "table" and  (rawget(v,"indexInstance"))[1] == "kick" then
+                v.tvk = {"kick",function() return game.Workspace:WaitForChild("") end}
+            end
+        end
+    end
+  }
+  
+  if game.PlaceId == 5602055394 or game.PlaceId == 7951883376 then
+    bypass.hoodmodded()
+  elseif game.PlaceId == 9183932460 or game.PlaceId == 9435785899 then
+    bypass.untitledhood()
+  elseif table.find(utility.Bypass,game.PlaceId) then 
+    bypass.adonis()
+  end
+  
+
+  local Players = game:GetService("Players")
+  local RunService = game:GetService("RunService")
+  local Workspace = game:GetService("Workspace")
+  local Gui = game:GetService("GuiService")
+  
+  local SilentTarget = nil
+  local CamlockTarget = nil
+  local ClosestPointCF = nil
+  local ClosestPointCF2 = nil
+  local PredictionValue = 0.133
+  local PredictionValue2 = 0.133
+  local closestsilentbodypart = Skid["BulletRedirection"]["Target Part"]
+  local closestcamlockpart = Skid["Aim Assist"]["Target Part"]
+  local LocalPlayer = Players.LocalPlayer
+  local mouse = LocalPlayer:GetMouse()
+  local CurrentCamera = Workspace.CurrentCamera
+  local v3 = Vector3
+  local v2 = Vector2
+  local CF = CFrame
+  
+  
+  local Circle = Drawing.new("Circle")
+  Circle.Transparency = Skid.FOV.Transparency
+  Circle.Radius = Skid.FOV.Radius * 3
+  Circle.Visible = Skid.FOV.Visible
+  Circle.Color = Skid.FOV.Color
+  Circle.Thickness = Skid.FOV.Thickness
+  Circle.Filled = Skid.FOV.Filled
+  
+  OnScreen = function(Object)
+    local _, screen = CurrentCamera:WorldToScreenPoint(Object.Position)
+    return screen
+  end
+  
+  CalculateChance = function(Percentage)
+    Percentage = math.floor(Percentage)
+    local chance = math.floor(Random.new().NextNumber(Random.new(), 0, 1) * 100) / 100
+  
+    return chance < Percentage / 100
+  end
+  
+  RayCastCheck = function(Part, PartDescendant)
+    local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded.Wait(LocalPlayer.CharacterAdded)
+    local Origin = CurrentCamera.CFrame.Position
+  
+    local RayCastParams = RaycastParams.new()
+    RayCastParams.FilterType = Enum.RaycastFilterType.Blacklist
+    RayCastParams.FilterDescendantsInstances = {Character, CurrentCamera}
+  
+    local Result = Workspace.Raycast(Workspace, Origin, Part.Position - Origin, RayCastParams)
+    
+    if (Result) then
+        local PartHit = Result.Instance
+        local Visible = (not PartHit or Instance.new("Part").IsDescendantOf(PartHit, PartDescendant))
+        
+        return Visible
+    end
+    return false
+  end
+  
+  Alive = function(Plr)
+    if Plr and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") ~= nil and Plr.Character:FindFirstChild("Humanoid") ~= nil and Plr.Character:FindFirstChild("Head") ~= nil then
+        return true
+    end
+    return false
+  end
+  
+  
+  GetMagnitudeFromMouse = function(Part)
+    local PartPos, OnScreen = CurrentCamera:WorldToScreenPoint(Part.Position)
+    if OnScreen then
+        local Magnitude = (v2.new(PartPos.X, PartPos.Y) - v2.new(mouse.X, mouse.Y)).Magnitude
+        return Magnitude
+    end
+    return math.huge
+  end
+   
+  GetPrediction = function() 
+    if Skid["Latency"]["Auto Prediction"] then 
+
+        local PingStats = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+        local Value = tostring(PingStats)
+        local PingValue = Value:split(" ")
+        local PingNumber = tonumber(PingValue[1])
+
+        if PingNumber < 130 then
+            return tonumber(PingNumber / 1000 + 0.037)
+        else
+            return tonumber(PingNumber / 1000 + 0.033)
+        end
+    else
+        return tonumber(Domain["Global"].Prediction)
+    end
+end
+
+  FindCrew = function(Player)
+  if Player:FindFirstChild("DataFolder") and Player.DataFolder:FindFirstChild("Information") and Player.DataFolder.Information:FindFirstChild("Crew") and LocalPlayer:FindFirstChild("DataFolder") and LocalPlayer.DataFolder:FindFirstChild("Information") and LocalPlayer.DataFolder.Information:FindFirstChild("Crew") then
+        if LocalPlayer.DataFolder.Information:FindFirstChild("Crew").Value ~= nil and Player.DataFolder.Information:FindFirstChild("Crew").Value ~= nil and Player.DataFolder.Information:FindFirstChild("Crew").Value ~= "" and LocalPlayer.DataFolder.Information:FindFirstChild("Crew").Value ~= "" then 
+      return true
+    end
+  end
+  return false
+  end
+  
+  CheckDistance = function(Player)
+    if (Player.Character.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude > Skid.Checks.Distance["Max Distance"] then 
+        return true
+    else
+        return false
+    end
+  end
+  
+  GetDistance = function(Player)
+    if Player ~= nil and Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then 
+        return math.floor((Player.Character.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude)
+    else
+        return 0
+    end
+  end
+  
+  GetHealth = function(Player)
+    if Player ~= nil and Player.Character and Player.Character:FindFirstChild("Humanoid") then 
+        return tostring(math.floor(Player.Character.Humanoid.Health).."/"..math.floor(Player.Character.Humanoid.MaxHealth))
+    else
+        return "0/100"
+    end
+  end
+  
+  GetGunName = function(Name)
+    local split = string.split(string.split(Name, "[")[2], "]")[1]
+    return split
+  end
+  
+  GetCurrentWeaponName = function()
+    if LocalPlayer.Character and LocalPlayer.Character:FindFirstChildWhichIsA("Tool") then
+       local Tool =  LocalPlayer.Character:FindFirstChildWhichIsA("Tool")
+       if string.find(Tool.Name, "%[") and string.find(Tool.Name, "%]") and not string.find(Tool.Name, "Wallet") and not string.find(Tool.Name, "Phone") then
+          return GetGunName(Tool.Name)
+       end
+    end
+    return nil
+  end
+  
+  WTS = function(Object)
+  local ObjectVector = CurrentCamera:WorldToScreenPoint(Object.Position)
+  return v2.new(ObjectVector.X, ObjectVector.Y)
+  end
+  
+  Filter = function(obj)
+  if (obj:IsA('BasePart')) then
+    return true
+  end
+  end
+  
+  mousePosv2 = function()
+  return v2.new(mouse.X, mouse.Y) 
+  end
+  
+  IsOnScreen2 = function(Object)
+    local IsOnScreen = CurrentCamera:WorldToScreenPoint(Object.Position)
+    return IsOnScreen
+  end
+  
+  FilterObjs = function(Object)
+    if string.find(Object.Name, "Gun") then
+        return
+    end
+    if table.find({"Part", "MeshPart", "BasePart"}, Object.ClassName) then
+        return true
+    end
+  end
+  
+  
+  
+  
+  function GetClosestPointOfPart(Part)
+    local mouseray = mouse.UnitRay
+    mouseray = mouseray.Origin + (mouseray.Direction * (Part.Position - mouseray.Origin).Magnitude)
+    local point =
+        (mouseray.Y >= (Part.Position - Part.Size / 2).Y and mouseray.Y <= (Part.Position + Part.Size / 2).Y) and
+            (Part.Position + Vector3.new(0, -Part.Position.Y + mouseray.Y, 0)) or Part.Position
+    local check = RaycastParams.new()
+    check.FilterType = Enum.RaycastFilterType.Whitelist
+    check.FilterDescendantsInstances = {Part}
+    local ray = game:GetService("Workspace"):Raycast(mouseray, (point - mouseray), check)
+    if ray then
+        return ray.Position
+    else
+        return mouse.Hit.Position
+    end
+  end
+  
+  
+  GetClosestBodyPart = function()
+    local character = SilentTarget.Character
+    local ClosestDistance = 1 / 0
+    local BodyPart = nil
+    if (character and character:GetChildren()) then
+        for _, x in next, character:GetChildren() do
+            if FilterObjs(x) and IsOnScreen2(x) then
+                local Distance = (WTS(x) - v2.new(mouse.X, mouse.Y)).Magnitude
+                    if (Distance < ClosestDistance) then
+                        ClosestDistance = Distance
+                        BodyPart = x
+                    end
+            end
+        end
+    end
+    if Skid["BulletRedirection"]["Closest Point"] then 
+        closestsilentbodypart = tostring(BodyPart)
+    else
+        closestsilentbodypart = Skid["BulletRedirection"]["Target Part"]
+    end
+  
+  end
+  
+  GetClosestBodyPart2 = function()
+    local character = CamlockTarget.Character
+    local ClosestDistance = 1 / 0
+    local BodyPart = nil
+    if (character and character:GetChildren()) then
+        for _, x in next, character:GetChildren() do
+            if FilterObjs(x) and IsOnScreen2(x) then
+                local Distance = (WTS(x) - v2.new(mouse.X, mouse.Y)).Magnitude
+                    if (Distance < ClosestDistance) then
+                        ClosestDistance = Distance
+                        BodyPart = x
+                    end
+            end
+        end
+    end
+    if Skid["Aim Assist"]["Closest Point"] then 
+        closestcamlockpart = tostring(BodyPart)
+    else
+        closestcamlockpart = Skid["Aim Assist"]["Target Part"] 
+    end
+  end
+  
+  UpdateFOV = function()
+    Circle.Transparency = Skid.FOV.Transparency
+    Circle.Radius = Skid.FOV.Radius * 3
+    Circle.Visible = Skid.FOV.Visible
+    Circle.Color = Skid.FOV.Color
+    Circle.Thickness = Skid.FOV.Thickness
+    Circle.Filled = Skid.FOV.Filled
+    Circle.Position = v2.new(mouse.X, mouse.Y + Gui:GetGuiInset().Y)
+  end
+  
+  local safeplayers = {
+    1496494935, -- darkzuees
+
+  }
+  
+  GetClosestPlayer = function()
+    local Target = nil
+    local Closest = math.huge
+    local HitChance = CalculateChance(Skid["BulletRedirection"]["Hit Chance"])
+  
+    if not HitChance then
+        return nil
+    end
+    for _, v in pairs(Players:GetPlayers()) do
+        if v.Character and v ~= LocalPlayer and v.Character:FindFirstChild("HumanoidRootPart") then
+            if not OnScreen(v.Character.HumanoidRootPart) then 
+                continue 
+            end
+            if Skid.Checks["Visible Check"] and not RayCastCheck(v.Character.HumanoidRootPart, v.Character) then 
+                continue 
+
+            end
+            if Skid.Checks["K.O Check"] and v.Character:FindFirstChild("BodyEffects") then
+                local KoCheck 
+                if v.Character.BodyEffects:FindFirstChild("KO") then 
+                    KoCheck = v.Character.BodyEffects:FindFirstChild("KO").Value
+                elseif v.Character.BodyEffects:FindFirstChild("K.O") then
+                    KoCheck = v.Character.BodyEffects:FindFirstChild("K.O").Value
+                end
+                
+                if KoCheck then
+                    continue
+                end
+            end
+            if Skid.Checks["Crew Check"] and FindCrew(v) and v.DataFolder.Information:FindFirstChild("Crew").Value == LocalPlayer.DataFolder.Information:FindFirstChild("Crew").Value then
+                continue
+            end
+            if Skid.Checks["Friend Check"] and game.Players.LocalPlayer:IsFriendsWith(v.UserId) then
+                continue
+            end
+  
+            if Skid.Checks["Distance"].Enabled and CheckDistance(v) then
+                continue
+            end
+  
+  
+            local Distance = GetMagnitudeFromMouse(v.Character.HumanoidRootPart)
+  
+            if (Distance < Closest and Circle.Radius + 10 > Distance) then
+                Closest = Distance
+                Target = v
+            end
+        end
+    end
+  
+    SilentTarget = Target
+    
+  end
+  
+  GetClosestPlayer2 = function()
+    local Target = nil
+    local Closest = math.huge
+    for _, v in pairs(Players:GetPlayers()) do
+        if v.Character and v ~= LocalPlayer and v.Character:FindFirstChild("HumanoidRootPart") then
+            if not OnScreen(v.Character.HumanoidRootPart) then 
+                continue 
+            end
+            if Skid.Checks["Visible Check"] and not RayCastCheck(v.Character.HumanoidRootPart, v.Character) then 
+                continue 
+            end
+            if Skid.Checks["K.O Check"] and v.Character:FindFirstChild("BodyEffects") then
+                local KoCheck 
+                if v.Character.BodyEffects:FindFirstChild("KO") then 
+                    KoCheck = v.Character.BodyEffects:FindFirstChild("KO").Value
+                elseif v.Character.BodyEffects:FindFirstChild("K.O").Value then
+                    KoCheck = v.Character.BodyEffects:FindFirstChild("K.O").Value
+                end
+                
+                if KoCheck then
+                    continue
+                end
+            end
+            if Skid.Checks["Crew Check"] and FindCrew(v) and v.DataFolder.Information:FindFirstChild("Crew").Value == LocalPlayer.DataFolder.Information:FindFirstChild("Crew").Value then
+                continue
+            end
+            
+            if Skid.Checks["Friend Check"] and game.Players.LocalPlayer:IsFriendsWith(v.UserId) then
+                continue
+            end
+  
+            if Skid.Checks["Distance"].Enabled and CheckDistance(v) then
+                continue
+            end
+  
+            local Distance = GetMagnitudeFromMouse(v.Character.HumanoidRootPart)
+  
+            if (Distance < Closest and Circle.Radius + 10 > Distance) then
+                Closest = Distance
+                Target = v
+            end
+        end
+    end
+  
+    CamlockTarget = Target
+  end
+  
+  game:GetService("RunService").RenderStepped:Connect(function()
+    if Skid["BulletRedirection"].Enabled and Skid["BulletRedirection"]["Closest Point"] and SilentTarget ~= nil and SilentTarget.Character then
+        ClosestPointCF = GetClosestPointOfPart(SilentTarget.Character[closestsilentbodypart])
+    end
+  end)
+  
+  game:GetService("RunService").RenderStepped:Connect(function()
+    if Skid["Aim Assist"].Enabled and Skid["Aim Assist"]["Closest Point"] and CamlockTarget ~= nil and CamlockTarget.Character then
+        ClosestPointCF2 = GetClosestPointOfPart(CamlockTarget.Character[closestcamlockpart])
+    end
+  end)
+  
+  
+  
+  
+  
+  local services = {
+    ["Players"] = game:GetService("Players"),
+    ["RunService"] = game:GetService("RunService"),
+  }
+  
+  local variables = {
+    LocalPlayer = services["Players"].LocalPlayer,
+    RenderStepped = services["RunService"].RenderStepped,
+  }
+  
+  local function get_instance(from,name)
+    if from ~= nil and name ~= nil then
+        local inst = from:FindFirstChildOfClass(name)
+        if not inst then
+            inst = from:FindFirstChild(name)
+        end
+        if inst then
+            return inst
+        end
+    end
+  end
+  
+  RunService.Heartbeat:Connect(function()
+    UpdateFOV()
+    if Skid["BulletRedirection"].Enabled then 
+        if string.lower(Skid["BulletRedirection"].Mode) == "closet" then 
+            GetClosestPlayer()
+        end
+        PredictionValue = GetPrediction()
+        if SilentTarget ~= nil then 
+            GetClosestBodyPart()
+        end
+    end
+    if Skid["Aim Assist"].Enabled then 
+        if string.lower(Skid["Aim Assist"].Mode) == "fov" then 
+            GetClosestPlayer2()
+        end
+        PredictionValue2 = GetPrediction()
+        if CamlockTarget ~= nil then 
+            GetClosestBodyPart2()
+        end
+    end
+  end)
+  
+  
+  
+  mouse.KeyDown:Connect(function(Key)
+    local Keybind = Skid["BulletRedirection"]["Target Key"]:lower()
+    local Keybind2 = Skid["Aim Assist"]["Target Key"]:lower()
+    if (Key == Keybind) and Skid["BulletRedirection"].Enabled then
+        if string.lower(Skid["BulletRedirection"].Mode) ==  "Target" then 
+            if SilentTarget == nil then 
+                GetClosestPlayer()
+                if Skid["BulletRedirection"].Notifications then 
+                    if SilentTarget ~= nil then 
+                        notify("Velocity.cc Has Locked onto: "..tostring(SilentTarget))
+                    else
+                        notify("No Player Was Found")
+                    end
+                end
+            else
+                SilentTarget = nil
+                if Skid["BulletRedirection"].Notifications then 
+                    notify("Velocity.cc Has Been Unlocked!")
+                end
+            end
+        end
+    end
+    if (Key == Keybind2 and Skid["Aim Assist"].Enabled) then
+        if string.lower(Skid["Aim Assist"].Mode) ==  "toggle" then 
+            if CamlockTarget == nil then 
+                GetClosestPlayer2()
+                if Skid["Aim Assist"].Notifications then 
+                    if CamlockTarget ~= nil then 
+                        notify("Velocity.cc Locked onto: "..tostring(CamlockTarget))
+                    else
+                        notify("No Player Was Found")
+                    end
+                end
+            else
+                CamlockTarget = nil
+                if Skid["Aim Assist"].Notifications then 
+                    notify("Velocity.cc Has Been Unlocked!")
+                end
+            end
+        end
+    end
+  end)
+  
+  mouse.KeyDown:Connect(function(Key)
+    local Keybind2 = Skid["Aim Assist"]["Target Key"]:lower()
+    if (Key == Keybind2 and Skid["Aim Assist"].Enabled) then
+        if string.lower(Skid["Aim Assist"].Mode) ==  "hold" then 
+            if CamlockTarget == nil then 
+                GetClosestPlayer2()
+                if Skid["Aim Assist"].Notifications then 
+                    if CamlockTarget ~= nil then 
+                        notify("Locked onto: "..tostring(CamlockTarget))
+                    else
+                        notify("No Player In FOV")
+                    end
+                end
+            end
+        end
+    end
+  end)
+  
+  mouse.KeyUp:Connect(function(Key)
+    local Keybind2 = Skid["Aim Assist"]["Target Key"]:lower()
+    if (Key == Keybind2) then
+        if string.lower(Skid["Aim Assist"].Mode) ==  "hold" then 
+            CamlockTarget = nil
+            if Skid["Aim Assist"].Notifications then 
+                notify("Unlocked")
+            end
+        end
+    end
+  end)
+  
+  
+  
+  local function get_calculated_velocity(obj)
+    if nil_check(obj) and obj.Character and obj.Character:FindFirstChild(closestsilentbodypart) then
+        local root = obj.Character.HumanoidRootPart
+        local character = obj.Character 
+  
+        local currentPosition = root.Position
+        local currentTime = tick() 
+  
+        wait(0.00350) 
+  
+        local newPosition = root.Position
+        local newTime = tick()
+        
+        local distanceTraveled = (newPosition - currentPosition) 
+  
+        local timeInterval = newTime - currentTime
+        local velocity = distanceTraveled / timeInterval
+        currentPosition = newPosition
+        currentTime = newTime
+        return velocity
+    end
+  end
+  
+  local newvel = v3.new(0,0,0)
+  local newvel2 = v3.new(0,0,0)
+  
+  RunService.Heartbeat:Connect(function()
+    if Skid.Resolver.Enabled and Skid["BulletRedirection"].Enabled then 
+        if Skid.Resolver.Method == "Delta" then 
+            if SilentTarget ~= nil then 
+                newvel = get_calculated_velocity(SilentTarget)
+            end
+        end
+    end
+  
+    local targetbone
+    local TargetCF
+    local pos
+    local char
+  
+    if SilentTarget ~= nil then 
+        targetbone = SilentTarget.Character[closestsilentbodypart]
+  
+        if Skid["BulletRedirection"]["Closest Point"] then
+            TargetCF = CFrame.new(ClosestPointCF)
+            --TargetCF = targetbone.CFrame
+        else
+            TargetCF = targetbone.CFrame
+        end
+  
+        char = CurrentCamera:WorldToViewportPoint(SilentTarget.Character[closestsilentbodypart].Position)
+        pos = workspace.CurrentCamera:WorldToViewportPoint(
+        TargetCF.Position + v3.new(0,Skid["BulletRedirection"]["Target Part Offset"],0) + 
+            (SilentTarget.Character[closestsilentbodypart].AssemblyLinearVelocity *
+            Skid["BulletRedirection"].Prediction))
+    end
+end)
+  
+   
+RunService.Heartbeat:Connect(function()
+    if Skid.Resolver.Enabled and Skid["Aim Assist"].Enabled then 
+        if Skid.Resolver.Method == "movevement breaker" then 
+            if CamlockTarget ~= nil then 
+                newvel2 = get_calculated_velocity(CamlockTarget)
+            end
+        end
+    end
+  
+    local targetbone
+    local TargetCF
+    local pos
+    local char
+  
+    if CamlockTarget ~= nil then 
+        targetbone = CamlockTarget.Character[closestcamlockpart]
+  
+        if Skid["Aim Assist"]["Closest Point"] then
+            TargetCF = CFrame.new(ClosestPointCF2)
+            --TargetCF = targetbone.CFrame
+        else
+            TargetCF = targetbone.CFrame
+        end
+  
+        char = CurrentCamera:WorldToViewportPoint(CamlockTarget.Character[closestcamlockpart].Position)
+        pos = workspace.CurrentCamera:WorldToViewportPoint(
+        TargetCF.Position + v3.new(0,Skid["Aim Assist"]["Target Part Offset"],0) + 
+            (CamlockTarget.Character[closestcamlockpart].AssemblyLinearVelocity *
+            Skid["Aim Assist"].Prediction))
+  
+  
+    end
+end)
+
+  local MouseArgs = {
+    "UpdateMousePosI",
+    "MousePos",
+    "MOUSE",
+    "MousePosDEBUG",
+    "GetMousePos",
+  }
+  
+  local function GetArgs()
+    if game.PlaceId == 2788229376 or game.PlaceId == 9825515356 or game.PlaceId == 16033173781 or game.PlaceId == 7213786345 then
+        return "UpdateMousePosI"
+    elseif game.PlaceId == 5602055394 or game.PlaceId == 7951883376 then
+        return "MousePos"
+    elseif game.PlaceId == 10100958808 or game.PlaceId == 12645617354 or game.PlaceId == 14171242539 or game.PlaceId == 14412436145 or game.PlaceId == 14412355918 or game.PlaceId == 14413720089 or game.PlaceId == 14413712255 or game.PlaceId == 14412601883 then
+        return "MOUSE"
+    elseif game.PlaceId == 1590803567 then
+        return "MousePosDEBUG"
+    elseif game.PlaceId == 9825515356 then
+        return "GetMousePos"
+    else
+        return "UpdateMousePos"
+    end
+  end
+  
+  
+  local function MainEvent()
+    for _, v in pairs(game.ReplicatedStorage:GetChildren()) do
+        if v.Name == "MainEvent" or v.Name == "Bullets" or v.Name == ".gg/untitledhood" or v.Name == "Remote" or v.Name == "MAINEVENT" then
+            return v
+        end
+    end
+  end
+  
+  game.Players.LocalPlayer.Character.ChildAdded:Connect(LPH_NO_VIRTUALIZE(function(tool)
+    if tool:IsA("Tool") then
+        tool.Activated:Connect(function()
+            if Skid["Bullet Redirection"].Enabled then 
+                if SilentTarget ~= nil then
+                    local targetbone = SilentTarget.Character[closestsilentbodypart]
+                    local offset = v3.new(0,0,0)
+                    local TargetCF = targetbone.Position
+                    local resolver = false
+  
+                    if Skid["Bullet Redirection"]["Closest Point"] then
+                        TargetCF = ClosestPointCF
+                    end
+  
+                    if Skid.Resolver.Enabled then 
+                        resolver = true
+                    end
+        
+        -- // movement breaker, Pred breaker, Underground, Random
+                    if resolver then 
+                        if Skid.Resolver.Method == "movement breaker" then 
+                            targetbone.Velocity = SilentTarget.Character.Humanoid.MoveDirection * SilentTarget.Character.Humanoid.WalkSpeed
+                            targetbone.AssemblyLinearVelocity = SilentTarget.Character.Humanoid.MoveDirection * SilentTarget.Character.Humanoid.WalkSpeed
+                        elseif Skid.Resolver.Method == "Pred breaker" then 
+                            targetbone.Velocity = v3.new(0,0,0)
+                            targetbone.AssemblyLinearVelocity = v3.new(0,0,0)
+                        elseif Skid.Resolver.Method == "Delta" or  Skid.Resolver.Method == "Recalculate" then 
+                            targetbone.Velocity = newvel
+                            targetbone.AssemblyLinearVelocity = newvel
+                        end
+                    end
+                    if Skid["Bullet Redirection"]["Anti Ground Shots"] then 
+                        targetbone.Velocity = v3.new(targetbone.Velocity.X, targetbone.Velocity.Y * 0.5, targetbone.Velocity.Z)
+                        targetbone.AssemblyLinearVelocity = v3.new(targetbone.Velocity.X, targetbone.Velocity.Y * 0.5, targetbone.Velocity.Z)
+                    end
+                    -- // oi
+  
+                    local Prediction = 
+                    TargetCF + 
+                    v3.new(0,Skid["Bullet Redirection"]["Target Part Offset"],0) + 
+                    offset + 
+                    targetbone.Velocity * 
+                    PredictionValue 
+                    MainEvent():FireServer(GetArgs(),Prediction)
+                end
+            end
+        end)
+    end
+  end))
+    
+  game.Players.LocalPlayer.CharacterAdded:Connect(LPH_NO_VIRTUALIZE(function(Character)
+    Character.ChildAdded:Connect(function(tool)
+        if tool:IsA("Tool") then
+            tool.Activated:Connect(function()
+                if Skid["Bullet Redirection"].Enabled then 
+                    if SilentTarget ~= nil then
+                        local targetbone = SilentTarget.Character[closestsilentbodypart]
+                        local offset = v3.new(0,0,0)
+                        local TargetCF = targetbone.Position
+                        local resolver = false
+            
+                        if Skid["Bullet Redirection"]["Closest Point"] then
+                            TargetCF = ClosestPointCF
+                        end
+    
+                        if Skid.Resolver.Enabled then 
+                            resolver = true
+                        end
+            
+            
+                        if resolver then 
+                            if Skid.Resolver.Method == "Move Direction" then 
+                                targetbone.Velocity = SilentTarget.Character.Humanoid.MoveDirection * SilentTarget.Character.Humanoid.WalkSpeed
+                                targetbone.AssemblyLinearVelocity = SilentTarget.Character.Humanoid.MoveDirection * SilentTarget.Character.Humanoid.WalkSpeed
+                            elseif Skid.Resolver.Method == "No Prediction" then 
+                                targetbone.Velocity = v3.new(0,0,0)
+                                targetbone.AssemblyLinearVelocity = v3.new(0,0,0)
+                            elseif Skid.Resolver.Method == "Delta" or  Skid.Resolver.Method == "Recalculate" then 
+                                targetbone.Velocity = newvel
+                                targetbone.AssemblyLinearVelocity = newvel
+                            end
+                        end
+                        if Skid["Bullet Redirection"]["Anti Ground Shots"] then 
+                            targetbone.Velocity = v3.new(targetbone.Velocity.X, targetbone.Velocity.Y * 0.5, targetbone.Velocity.Z)
+                            targetbone.AssemblyLinearVelocity = v3.new(targetbone.Velocity.X, targetbone.Velocity.Y * 0.5, targetbone.Velocity.Z)
+                        end
+                        -- // oi
+    
+                        local Prediction = 
+                        TargetCF + 
+                        v3.new(0,Skid["Bullet Redirection"]["Target Part Offset"],0) + 
+                        offset + 
+                        targetbone.Velocity * 
+                        PredictionValue 
+                        MainEvent():FireServer(GetArgs(), Prediction)
+                    end
+                end
+            end)
+        end
+    end)
+  end))
+ -- // uh oh the opps are here
+ LPH_NO_VIRTUALIZE(function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if Skid["Aim Assist"]["Outside Fov"] and CamlockTarget and CamlockTarget.Character and CamlockTarget.Character:FindFirstChild(closestcamlockpart) then
+            if Circle.Radius <
+                (Vector2.new(
+                    CurrentCamera:WorldToScreenPoint(CamlockTarget.Character.HumanoidRootPart.Position).X,
+                    CurrentCamera:WorldToScreenPoint(CamlockTarget.Character.HumanoidRootPart.Position).Y
+                ) - Vector2.new(mouse.X, mouse.Y)).Magnitude
+             then
+                CamlockTarget = nil
+            end
+        end
+        if Skid["Aim Assist"]["Death Unlock"] == true and CamlockTarget ~= nil and CamlockTarget.Character and CamlockTarget.Character:FindFirstChild(closestcamlockpart) then
+            if CamlockTarget.Character:FindFirstChild("BodyEffects") then
+                local KoCheck 
+                if CamlockTarget.Character.BodyEffects:FindFirstChild("KO") then 
+                    KoCheck = CamlockTarget.Character.BodyEffects:FindFirstChild("KO").Value
+                elseif CamlockTarget.Character.BodyEffects:FindFirstChild("K.O") then
+                    KoCheck = CamlockTarget.Character.BodyEffects:FindFirstChild("K.O").Value
+                end
+                
+                if KoCheck then
+                    CamlockTarget = nil   
+                    if Skid["Aim Assist"].Notifications then 
+                        notify("Target Knocked, Unlocked.")
+                    end
+                end
+            end
+        end
+        if Skid["Aim Assist"]["Behind Object"] == true and string.lower(Skid["Aim Assist"].Mode) ~= "fov" and CamlockTarget ~= nil and CamlockTarget.Character and CamlockTarget.Character:FindFirstChild(closestcamlockpart) then
+            if not RayCastCheck(CamlockTarget.Character[closestcamlockpart], CamlockTarget.Character) then 
+                CamlockTarget = nil   
+                if Skid["Aim Assist"].Notifications then 
+                    notify("Target Behind Wall, Unlocked.")
+                end
+            end
+        end
+        if Skid["Aim Assist"].Enabled and CamlockTarget and CamlockTarget.Character and CamlockTarget.Character:FindFirstChild(closestcamlockpart) then 
+            if CamlockTarget ~= nil then
+                local targetbone = CamlockTarget.Character[closestcamlockpart]
+                local offset = v3.new(0,0,0)
+                local TargetCF = targetbone.Position
+                local smoothing = 1
+                local resolver = false
+  
+                if Skid["Aim Assist"].Smoothness == true then 
+                    smoothing = Skid["Aim Assist"]["Smoothness Value"]
+                end
+                if Skid["Aim Assist"]["Closest Point"] then
+                    TargetCF = ClosestPointCF2
+                end
+  
+                if Skid.Resolver.Enabled then 
+                    resolver = true
+                end
+  
+                if resolver then 
+                    if Skid.Resolver.Method == "Move Direction" then 
+                        targetbone.Velocity = CamlockTarget.Character.Humanoid.MoveDirection * CamlockTarget.Character.Humanoid.WalkSpeed
+                        targetbone.AssemblyLinearVelocity = CamlockTarget.Character.Humanoid.MoveDirection * CamlockTarget.Character.Humanoid.WalkSpeed
+                    elseif Skid.Resolver.Method == "No Prediction" then 
+                        targetbone.Velocity = v3.new(0,0,0)
+                        targetbone.AssemblyLinearVelocity = v3.new(0,0,0)
+                    elseif Skid.Resolver.Method == "Delta" then 
+                        targetbone.Velocity = newvel
+                        targetbone.AssemblyLinearVelocity = newvel
+                    end
+                end
+                if Skid["Bullet Redirection"]["Anti Ground Shots"] then 
+                    targetbone.Velocity = v3.new(targetbone.Velocity.X, targetbone.Velocity.Y * 0.5, targetbone.Velocity.Z)
+                    targetbone.AssemblyLinearVelocity = v3.new(targetbone.Velocity.X, targetbone.Velocity.Y * 0.5, targetbone.Velocity.Z)
+                end
+                -- // oi
+  
+                local Prediction = 
+                TargetCF + 
+                v3.new(0,Skid["Aim Assist"]["Target Part Offset"],0) + 
+                offset + 
+                targetbone.Velocity * 
+                PredictionValue2
+                local Main = CF.new(CurrentCamera.CFrame.p, Prediction)
+                CurrentCamera.CFrame = CurrentCamera.CFrame:Lerp(Main, smoothing, Skid["Aim Assist"]["Easing Style"] , Enum.EasingDirection.InOut)
+            end
+        end
+    end)
+  end)()
+
+-- // bypass
+    
+-- // Blink esp
+    local Players = game:GetService("Players")
+    local UserInputService = game:GetService("UserInputService")
+    local TweenService = game:GetService("TweenService")
+    local GuiService = game:GetService("GuiService")
+    local localPlayer = Players.LocalPlayer
+    local Camera = game.Workspace.CurrentCamera
+    
+    -- Function to determine if the UI should be hidden
+    local function shouldHideUI()
+        return GuiService:IsTenFootInterface()
+    end
+    
+    local function isOnScreen(part)
+        local vector, onScreen = Camera:WorldToViewportPoint(part.Position)
+        return onScreen
+    end
+    
+    local function createHighlight(targetPlayer)
+        if shouldHideUI() then return end
+    
+        local character = targetPlayer.Character
+        if character then
+            local head = character:FindFirstChild("Head")
+            if head then
+                if isOnScreen(head) then
+                    local billboardGui = Instance.new("BillboardGui")
+                    billboardGui.Size = UDim2.new(4 * getgenv().Skid["Blink Esp"]["ScaleFactor"], 0, 7.5 * getgenv().Skid["Blink Esp"]["ScaleFactor"], 0) -- Adjusted size with scale factor
+                    billboardGui.AlwaysOnTop = true
+                    billboardGui.Parent = head
+    
+                    local frame = Instance.new("Frame")
+                    frame.Size = UDim2.new(1, 0, 1, 0)
+                    frame.BackgroundTransparency = 0.5 
+                    frame.BackgroundColor3 = Color3.fromRGB(170, 0, 255) 
+                    frame.Parent = billboardGui
+    
+                    local background = Instance.new("UIGradient")
+                    background.Rotation = 45
+                    background.Parent = frame
+                    background.Color = ColorSequence.new{
+                        ColorSequenceKeypoint.new(0, Color3.new(0, 0, 0)),
+                        ColorSequenceKeypoint.new(1, Color3.fromRGB(170, 0, 255)) 
+                    }
+    
+                    local tweenInfo = TweenInfo.new(getgenv().Skid["Blink Esp"]["Blink Speed"], Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+                    local tween = TweenService:Create(frame, tweenInfo, {BackgroundTransparency = 1})
+                    tween:Play()
+    
+                    tween.Completed:Connect(function()
+                        billboardGui:Destroy()
+                    end)
+    
+                    -- Adjust the position of the billboardGui
+                    billboardGui.StudsOffset = getgenv().Skid["Blink Esp"]["BoxPosition"]
+                end
+            end
+        end
+    end
+    
+    local function highlightAllPlayers()
+        for _, player in pairs(Players:GetPlayers()) do
+            if player ~= localPlayer then
+                createHighlight(player)
+            end
+        end
+    end
+    
+    local function onKeyPress(input)
+        if input.KeyCode == getgenv().Skid["Blink Esp"]["Blink Key"] then
+            highlightAllPlayers()
+        end
+    end
+    
+    UserInputService.InputBegan:Connect(onKeyPress)
+
+-- // Trashtalk
+local userInputService = game:GetService("UserInputService")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+
+local Skid = getgenv().Skid.Trashtalk
+
+if Skid.Enabled then
+    local words = {
+        'Velocity is tapn',
+        'Start hittin shots with velocity',
+        'Join velocitycc',
+        'stop playin with kid and cop velocitycc',
+        'Start tapn with velocitycc please😭🙏',
+    }
+
+    local player = game.Players.LocalPlayer
+    local keybind = Skid.Key
+
+    local event = replicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+    userInputService.InputBegan:Connect(function(input, gameProcessed)
+        if not gameProcessed and input.KeyCode == Enum.KeyCode[keybind] then
+            local randomIndex = math.random(1, #words)
+            event:FireServer(words[randomIndex], "All")
+        end
+    end)
+end
+
+-- //  Gun fov
+if getgenv().Skid.GunFOV.Enabled == true then
+    game:GetService("Players").LocalPlayer.Character.ChildAdded:Connect(
+        function(gun)
+            local name = gun.Name
+            if gun.Name == "[Revolver]" then
+                Skid.FOV.Radius = getgenv().Skid.GunFOV.Revolver
+            end
+            if gun.Name == "[Double-Barrel SG]" then
+                Skid.FOV.Radius= getgenv().Skid.GunFOV.DoubleBarrel
+            end
+            if gun.Name == "[Shotgun]" then
+                Skid.FOV.Radius = getgenv().Skid.GunFOV.Shotgun
+            end
+            if gun.Name == "[TacticalShotgun]" then
+                Skid.FOV.Radius = getgenv().Skid.GunFOV.TacticalShotgun
+            end
+            if gun.Name == "[Silencer]" then
+                Skid.FOV.Radius = getgenv().Skid.GunFOV.Silencer
+            end
+            if gun.Name == "[P90]" then
+                Skid.FOV.Radius = getgenv().Skid.GunFOV.P90
+            end
+            player.CharacterAdded:Connect(createCrosshair)
+        end
+    )
+end
+-- // Loop through all descendants of game
+for _, instance in ipairs(game:GetDescendants()) do
+
+    -- // Check if the instance is a "LocalScript" or "ModuleScript"
+    if instance:IsA("LocalScript") or instance:IsA("ModuleScript") then
+
+        -- // Get bytecode for the script
+        local bytecode = getscriptbytecode(instance)
+        local convertreadable = tostring(bytecode)
+
+        -- // Print lines starting with "Update"
+        for line in convertreadable:gmatch("%w+") do
+            if line:match("UpdateMousePos") then
+                print(line)
+            end
+        end
+
+    end
+
+end
+
+if line:match("UpdateMousePosI") then 
+    print("Args Are Correct")
+else
+    game.Players.LocalPlayer:Kick("Wait for velocity.cc to update")
+end
+loadstring(game:HttpGet("https://github.com/FwVay/FwVay/blob/main/Pulse")) ()
