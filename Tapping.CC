@@ -117,4 +117,4 @@ getgenv().Tapping.CC = {
     }
 }
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Convicted1337/Main/main/Pulse#L7C29",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/FwPulse/FwVay/main/Tapping.CC ")) ()
