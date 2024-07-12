@@ -1,132 +1,120 @@
--- Define your Settings table
-getgenv().Settings = {
-    ["Silent"] = {
-        ["Enabled"] = true,
-        ["AimPart"] = "HumanoidRootPart",
-        ["WallCheck"] = true,
-        ["Visualize"] = true,
-        ["Prediction"] = {
-            ["Horizontal"] = 0.349,
-            ["Vertical"] = 0.05,
+_G.Version = "Tapping.CC" -- // Dont change
+Key = "123EuleonTappin"
+
+getgenv().Tapping.CC = { 
+    Global = {
+        Intro = true,
+        MouseArg = "UpdateMousePos",
+        Remote = game:GetService("ReplicatedStorage").MainEvent,
+        SafteyMeasures = {
+            Resolver = true,
+            Anti_Aim_Viewer = true,
         },
-        ["AutoPrediction"] = {
-            ["Enabled"] = true,
-            ["Type"] = "Normal", --//Normal, Custom
-            ["ping20_30"] = 0.142,
-            ["ping30_40"] = 0.142,
-            ["ping40_50"] = 0.142,
-            ["ping50_60"] = 0.142,
-            ["ping60_70"] = 0.142,
-            ["ping70_80"] = 0.142,
-            ["ping80_90"] = 0.142,
-            ["ping90_100"] = 0.142,
-            ["ping100_110"] = 0.142,
-            ["ping110_120"] = 0.142,
-            ["ping120_130"] = 0.142,
-            ["ping130_140"] = 0.142,
-            ["ping140_150"] = 0.142,
-            ["ping150_160"] = 0.142,
-            ["ping160_170"] = 0.142,
-            ["ping170_180"] = 0.142,
-            ["ping180_190"] = 0.142,
-            ["ping190_200"] = 0.142,
-        },
-        ["Mode"] = "Namecall", --index,namecall
     },
-    ["FOV"] = {
-        ["Enabled"] = true,
-        ["Size"] = 30,
-        ["Filled"] = false,
-        ["Thickness"] = 0.66,
-        ["Transparency"] = 0.1,
-        ["Color"] = Color3.fromRGB(255,255,255),
+    ["SilentAim"] = {
+        Enabled = true,
+        UseKeybind = false,
+        HitChance = 100,
+        Keybind = "L",
+        TargetMode = "FOV", -- FOV, Target
+        DefaultPrediction = 0.14224646,
+        PredictionType = "Defult", -- Default, Vector3
+        PredictionX = 0.1144334312,
+        PredictionY = 0.101214113,
+        PredictionZ = 0.1149354135,
+        HitPart = "HumanoidRootPart",
+        HitPartMode = "Default", -- Nearest Part, Nearest Point, Default
+        AirShotHitChance = 100,
+        AirFOV = false,
+        AirFOVRadius = 200,
     },
     ["Camlock"] = {
-        ["Enabled"] = false,
-        ["AimPart"] = "HumanoidRootPart",
-        ["Prediction"] = {
-            ["Horizontal"] = 0.185,
-            ["Vertical"] = 0.1,
+        Enabled = true,
+        LockKey = "Q",
+        TargetMode = "Camera", -- Mouse, Camera
+        HitPart = "HumanoidRootPart",
+        HitPartMode = "Default", -- "Default", "Nearest Part"
+        DefaultPrediction = 0.127512934,
+        PredictionType = "Vector3",
+        PredictionX = 0.125358125312,
+        PredictionY = 0.101102340,
+        PredictionZ = 0.144125360,
+        CameraSmoothnessX = 0.075,
+        CameraSmoothnessY = 0.075,
+        CameraSpeedX = 0.850,
+        CameraSpeedY = 0.050,
+        MouseSmoothnessX = 0.15,
+        MouseSmoothnessY = 0.15,
+        MouseSpeedX = 0.6,
+        MouseSpeedY = 0.9,
+        Settings = {
+            CalculateVelocity = false,
+            IntersectionalMovement = false,
+            UseFOV = false,
+            UseDeadzone = false,
         },
-        ["Smoothness"] = 0.2,
-        ["AutoPrediction"] = {
-            ["Enabled"] = false,
-            ["Type"] = "Normal", --//Normal, Custom
-            ["ping20_30"] = 0.12588,
-            ["ping30_40"] = 0.11911,
-            ["ping40_50"] = 0.12471,
-            ["ping50_60"] = 0.12766,
-            ["ping60_70"] = 0.12731,
-            ["ping70_80"] = 0.12951,
-            ["ping80_90"] = 0.13181,
-            ["ping90_100"] = 0.138,
-            ["ping100_110"] = 0.146,
-            ["ping110_120"] = 0.1367,
-            ["ping120_130"] = 0.1401,
-            ["ping130_140"] = 0.1437,
-            ["ping140_150"] = 0.153,
-            ["ping150_160"] = 0.1514,
-            ["ping160_170"] = 0.1663,
-            ["ping170_180"] = 0.1672,
-            ["ping180_190"] = 0.1848,
-            ["ping190_200"] = 0.1865,
-        },
-        ["Shake"] = {
-            ["X"] = 10,
-            ["Y"] = 0,
-            ["Z"] = 0, --dont touch
-        },
+        Triggerbot = {
+            Enabled = false,
+            UseKeybind = false,
+            Keybind = "P",
+            Prediction = 0.125,
+            TargetMode = "Predictor", -- Legit, Blatant, Predictor
+            CamlockSupport = false,
+            ShootPredictor = true,
+            MinDelay = 0.20,
+            MaxDelay = 0.40,
+            WhitelistedParts = {"HumanoidRootPart","UpperTorso","LowerTorso"}    
+        }
     },
-    ["Misc"] = {
-        ["NoDelay"] = true,
-        ["AutoReload"] = false,
-        ["AutoAir"] = {
-            ["Enabled"] = false,
-            ["Interval"] = 0.5,
+    ["GlobalSettings"] = {
+        Checks = {
+            DeadCheck = false,
+            GrabbedCheck = false,
+            VisibleCheck = false,
+            CrewCheck = false,
         },
-        ["CMDS"] = {
-            ["Enabled"] = false,
-            ["FOVPrefix"] = "B",
-            ["Prediction"] = "A",
+        Exploits = {
+            InstantMacro = true, -- // This macro is op and fast
+            InstantMacroKey = "X",
+            RejoinServer = false,
+            RejoinServerKeybind = "G",
+            FindGoodServer = false,
+            FindGoodServerKeyBind = "F",
+            RemoveStun = true, -- // Removes the fact when you get flung you get stunned at one place and gotta wait a couple seconds to get back up
+            RemoveSeats = true,
+            Panic = false,
+            PanicKey = "P",
+            F9Clear = false,
+            F9ClearKey = "M",
         },
-    },
-    ["Resolution"] = {
-        ["Value"] = 1,
-    },
-    ["Resolvers"] = {  --entirely not
-        ["Enabled"] = false,
-        ["AutoDetect"] = false,
-        ["Type"] = "Recalculator",
-    },
-    ["Visuals"] = {
-        ["Ambient"] = {
-            ["Enabled"] = false,
-            ["Color"] = Color3.fromRGB(4, 0, 255),
+        Visuals = {
+            MiniMap = false,
+            OppDetector = false,
+            OppDetectorSelect = "R",
+            OppDetectorClear = "E",
         },
-        ["OutDoor Ambient"] = {
-            ["Enabled"] = false,
-            ["Color"] = Color3.fromRGB(4, 0, 255),
+        Renders = {
+            GlobalFOVSettings = {
+                Position = "Mouse" -- // Mouse, Center
+            },
+            SilentAim = {
+                Visible = true,
+                Color = Color3.new(0.333333, 0.666667, 1),
+                Radius = 100,
+                StickFOV = false,
+            },
+            Camlock = {
+                Visible = false,
+                Color = Color3.new(0.333333, 0.666667, 1),
+                Radius = 150,
+                Deadzone = {
+                    Visible = false,
+                    Color = Color3.new(0.333333, 0.666667, 1),
+                    Radius = 5,
+                }
+            },
         },
-        ["Fog Modifications"] = {
-            ["Enabled"] = false,
-            ["Color"] = Color3.fromRGB(4, 0, 255),
-            ["Start"] = 15,
-            ["End"] = 100,
-        },
-        ["ColorCorrection"] = {
-            ["Enabled"] = false,
-            ["Brightness"] = 0,
-            ["Saturation"] = 5,
-            ["Contrast"] = 2,
-        },
-    },
+    }
 }
 
--- Load and execute the external script
-loadstring(game:HttpGet("https://raw.githubusercontent.com/bobbbb-b/B/main/pulse.lua"))()
-
--- Send a notification
-game.StarterGui:SetCore("SendNotification", {
-    Title = "Pulse",
-    Text = "Join Pulse.CC "
-})
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Convicted1337/Main/main/Pulse#L7C29",true))()
